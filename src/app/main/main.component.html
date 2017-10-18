@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Github Score</title>
+</head>
+<body>
+  <fieldset>
+    <h1>Github Score</h1>
+    <div>
+      <form (submit)="onSubmit()" #formData='ngForm'>
+        Github Username: <input name='username' 
+        type='text' 
+        required 
+        minlength="1" 
+        [(ngModel)]="taskobject.username" 
+        #username="ngModel"
+        >
+        <span *ngIf='!username.valid'>Username is required</span><br>
+        <input [disabled]='formData.invalid' type="submit" value="Calculate my Github Score">
+      </form>
+    </div>
+    <div>
+      <h1>Your Score: {{ score }} </h1>
+      <h3 style="color: red " *ngIf='score < 20'> Needs Work! </h3>
+      <h3 style="color: orange " *ngIf='score > 19 && score < 50'> A decent start! </h3>
+      <h3 style="color: blue " *ngIf='score > 49 && score < 100'> Doing good! </h3>
+      <h3 style="color: green " *ngIf='score > 99 && score < 200'> Great Job! </h3>
+      <h3 style="color: pink " *ngIf='score > 199'> Github Elite! </h3>
+    </div>
+  </fieldset>
+</body>
+</html>
